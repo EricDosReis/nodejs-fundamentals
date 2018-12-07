@@ -1,0 +1,28 @@
+{
+  "name": "nodejs-fundamentals",
+  "version": "1.0.0",
+  "description": "Project from course 'NodeJS Fundamentals' lectured by Gabriel Leite",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EricDosReis/nodejs-fundamentals.git"
+  },
+  "keywords": [
+    "javascript",
+    "nodejs",
+    "api",
+    "rest",
+    "studies",
+    "course",
+    "alura"
+  ],
+  "author": "Eric dos Reis <ericdosreis.personal@gmail.com> (https://github.com/EricDosReis)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/EricDosReis/nodejs-fundamentals/issues"
+  },
+  "homepage": "https://github.com/EricDosReis/nodejs-fundamentals#readme"
+}
