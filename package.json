@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon server.js"
+    "start": "nodemon server.js --ignore *.marko.js"
   },
   "repository": {
     "type": "git",
@@ -27,7 +27,8 @@
   },
   "homepage": "https://github.com/EricDosReis/nodejs-fundamentals#readme",
   "dependencies": {
-    "express": "4.16.4"
+    "express": "4.16.4",
+    "marko": "4.14.2"
   },
   "devDependencies": {
     "nodemon": "1.18.7"
