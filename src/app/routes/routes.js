@@ -29,5 +29,11 @@ module.exports = (app) => {
       })
       .catch(console.error); 
   });
+
+  app.get('/book/form', (req, res) => {
+    res.marko(
+      require('../views/book/form')
+    );
+  });
 };
 
