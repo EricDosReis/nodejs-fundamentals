@@ -28,7 +28,8 @@
   "homepage": "https://github.com/EricDosReis/nodejs-fundamentals#readme",
   "dependencies": {
     "express": "4.16.4",
-    "marko": "4.14.2"
+    "marko": "4.14.2",
+    "sqlite3": "4.0.4"
   },
   "devDependencies": {
     "nodemon": "1.18.7"
