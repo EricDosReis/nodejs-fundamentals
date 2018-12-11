@@ -35,5 +35,14 @@ module.exports = (app) => {
       require('../views/book/form')
     );
   });
+
+  app.post('/book', (req, res) => {
+    const bookDao = new BookDao(db);
+
+    bookDao
+      .add(req.body)
+      .then(res.redirect('/book'))
+      .catch(console.error);
+  })
 };
 

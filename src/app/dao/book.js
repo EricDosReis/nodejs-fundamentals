@@ -17,4 +17,28 @@ module.exports = class bookDao {
       );
     });
   }
+
+  add(book) {
+    return new Promise((resolve, reject) => {
+      this._db.run(`
+        INSERT INTO book (
+          title,
+          price,
+          description
+        ) VALUES (?, ?, ?)
+        `,[
+          book.title,
+          book.price,
+          book.description
+        ],
+        (error) => {
+          if (error) {
+            return reject('Could not add book');
+          }
+
+          return resolve();
+        }
+      )
+    });
+  }
 }
