@@ -6,10 +6,27 @@
   <body>
     <h1>Books</h1>
 
-    <ul>
-      <li for(book in data.books)>
-        ${book.title}
-      </li>
-    </ul>
+    <table id="books">
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Price</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr id="book-${book.id}" for(book in data.books)>
+          <td>${book.title}</td>
+          <td>${book.price}</td>
+          <td>
+            <button type="button" data-ref="${book.id}" data-action="update">Editar</button> 
+            <button type="button" data-ref="${book.id}" data-action="remove">Remover</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <script src="/public/js/app.js"></script>
   </body>
 </html>

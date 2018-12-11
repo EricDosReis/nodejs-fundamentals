@@ -11,6 +11,7 @@ var marko_template = module.exports = require("marko/src/html").t(__filename),
     component_globals_tag = marko_loadTag(require("marko/src/components/taglib/component-globals-tag")),
     marko_forEach = marko_helpers.f,
     marko_escapeXml = marko_helpers.x,
+    marko_attr = marko_helpers.a,
     init_components_tag = marko_loadTag(require("marko/src/components/taglib/init-components-tag")),
     await_reorderer_tag = marko_loadTag(require("marko/src/taglibs/async/await-reorderer-tag"));
 
@@ -21,23 +22,31 @@ function render(input, out, __component, component, state) {
 
   component_globals_tag({}, out);
 
-  out.w("<h1>Books</h1><ul>");
+  out.w("<h1>Books</h1><table id=\"books\"><thead><tr><th>Title</th><th>Price</th><th>Actions</th></tr></thead><tbody>");
 
-  var for__6 = 0;
+  var for__12 = 0;
 
   marko_forEach(data.books, function(book) {
-    var keyscope__7 = "[" + ((for__6++) + "]");
+    var keyscope__13 = "[" + ((for__12++) + "]");
 
-    out.w("<li>" +
+    out.w("<tr" +
+      marko_attr("id", "book-" + book.id) +
+      "><td>" +
       marko_escapeXml(book.title) +
-      "</li>");
+      "</td><td>" +
+      marko_escapeXml(book.price) +
+      "</td><td><button type=\"button\"" +
+      marko_attr("data-ref", "" + book.id) +
+      " data-action=\"update\">Editar</button> <button type=\"button\"" +
+      marko_attr("data-ref", "" + book.id) +
+      " data-action=\"remove\">Remover</button></td></tr>");
   });
 
-  out.w("</ul>");
+  out.w("</tbody></table><script src=\"/public/js/app.js\"></script>");
 
   init_components_tag({}, out);
 
-  await_reorderer_tag({}, out, __component, "9");
+  await_reorderer_tag({}, out, __component, "21");
 
   out.w("</body></html>");
 }

@@ -26,7 +26,7 @@ module.exports = class bookDao {
           price,
           description
         ) VALUES (?, ?, ?)
-        `,[
+        `, [
           book.title,
           book.price,
           book.description
@@ -38,7 +38,25 @@ module.exports = class bookDao {
 
           return resolve();
         }
-      )
+      );
+    });
+  }
+
+  delete(id) {
+    return new Promise((resolve, reject) => {
+      this._db.run(`
+        DELETE FROM book
+        WHERE id = ?
+      `,
+        id
+      ,
+      (error) => {
+        if (error) {
+          return reject('Could not delete book');
+        }
+
+        return resolve();
+      });
     });
   }
 }

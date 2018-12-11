@@ -15,7 +15,7 @@ var marko_template = module.exports = require("marko/src/html").t(__filename),
 function render(input, out, __component, component, state) {
   var data = input;
 
-  out.w("<html><head><title>New book</title></head><body>");
+  out.w("<html><head><title>New book</title><link rel=\"stylesheet\" href=\"/public/css/style.css\"></head><body>");
 
   component_globals_tag({}, out);
 
@@ -23,7 +23,7 @@ function render(input, out, __component, component, state) {
 
   init_components_tag({}, out);
 
-  await_reorderer_tag({}, out, __component, "17");
+  await_reorderer_tag({}, out, __component, "18");
 
   out.w("</body></html>");
 }

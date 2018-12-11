@@ -9,6 +9,8 @@ app.use(bodyParser.urlencoded({
   extended: true
 }));
 
+app.use('/public', express.static('src/app/public'));
+
 const routes = require('../app/routes/routes');
 routes(app);
 
