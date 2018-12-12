@@ -19,21 +19,29 @@
         </thead>
 
         <tbody>
-          <tr id="book-${book.id}" for(book in data.books)>
-            <td>${book.title}</td>
-            <td>${book.price}</td>
-            <td>
-              <button type="button" class="button m-0 mr-1 uppercase" data-ref="${book.id}" data-action="edit">
-                Edit
-              </button>
+          <for (book in data.books)>
+          
+            <tr id="book-${book.id}">
+              <td>${book.title}</td>
+              <td>${book.price}</td>
+              <td>
+                <a href="/book/form/${book.id}" class="button m-0 mr-1 uppercase">
+                  Edit
+                </a>
 
-              <button type="button" class="button m-0 uppercase" data-ref="${book.id}" data-action="remove">
-                Remove
-              </button>
-            </td>
-          </tr>
+                <button type="button" class="button m-0 uppercase" data-ref="${book.id}" data-action="remove">
+                  Remove
+                </button>
+              </td>
+            </tr>
+            
+          </for>
         </tbody>
       </table>
+
+      <a href="/book/form" class="button mr-1 uppercase">
+        New
+      </a>
     </main>
 
     <script src="/public/js/books-controller.js"></script>

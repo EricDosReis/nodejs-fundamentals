@@ -42,6 +42,47 @@ module.exports = class bookDao {
     });
   }
 
+  update({ id, title, price, description }) {
+    return new Promise((resolve, reject) => {
+      this._db.run(`
+        UPDATE book
+        SET title = ?
+            price = ?,
+            description = ?,
+        WHERE id = ?
+        `, [
+          id,
+          title,
+          price,
+          description
+        ],
+        (error) => {
+          if (error) {
+            return reject('Could not update book');
+          }
+
+          return resolve();
+        }
+      );
+    });
+  }
+
+  getOne(id) {
+    return new Promise((resolve, reject) => {
+      this._db.all(
+        'SELECT * FROM book WHERE id = ?',
+        id,
+        (error, result) => {
+          if (error) {
+            return reject('Book not found');
+          }
+
+          return resolve(result[0]);
+        }
+      );
+    });
+  }
+
   delete(id) {
     return new Promise((resolve, reject) => {
       this._db.run(`

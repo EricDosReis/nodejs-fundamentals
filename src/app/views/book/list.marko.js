@@ -35,18 +35,18 @@ function render(input, out, __component, component, state) {
       marko_escapeXml(book.title) +
       "</td><td>" +
       marko_escapeXml(book.price) +
-      "</td><td><button type=\"button\" class=\"button m-0 mr-1 uppercase\"" +
-      marko_attr("data-ref", "" + book.id) +
-      " data-action=\"edit\">Edit</button><button type=\"button\" class=\"button m-0 uppercase\"" +
+      "</td><td><a" +
+      marko_attr("href", "/book/form/" + book.id) +
+      " class=\"button m-0 mr-1 uppercase\">Edit</a><button type=\"button\" class=\"button m-0 uppercase\"" +
       marko_attr("data-ref", "" + book.id) +
       " data-action=\"remove\">Remove</button></td></tr>");
   });
 
-  out.w("</tbody></table></main><script src=\"/public/js/books-controller.js\"></script>");
+  out.w("</tbody></table><a href=\"/book/form\" class=\"button mr-1 uppercase\">New</a></main><script src=\"/public/js/books-controller.js\"></script>");
 
   init_components_tag({}, out);
 
-  await_reorderer_tag({}, out, __component, "23");
+  await_reorderer_tag({}, out, __component, "24");
 
   out.w("</body></html>");
 }

@@ -9,6 +9,8 @@ var marko_template = module.exports = require("marko/src/html").t(__filename),
     marko_helpers = require("marko/src/runtime/html/helpers"),
     marko_loadTag = marko_helpers.t,
     component_globals_tag = marko_loadTag(require("marko/src/components/taglib/component-globals-tag")),
+    marko_attr = marko_helpers.a,
+    marko_escapeXml = marko_helpers.x,
     init_components_tag = marko_loadTag(require("marko/src/components/taglib/init-components-tag")),
     await_reorderer_tag = marko_loadTag(require("marko/src/taglibs/async/await-reorderer-tag"));
 
@@ -19,7 +21,15 @@ function render(input, out, __component, component, state) {
 
   component_globals_tag({}, out);
 
-  out.w("<main class=\"wrapper center\"> <h1>Add a new book</h1><form action=\"/book\" method=\"post\"><input type=\"hidden\" id=\"id\" name=\"id\"><div><label for=\"title\">Title</label><input type=\"text\" id=\"title\" name=\"title\"></div><div><label for=\"price\">Price</label><input type=\"number\" id=\"price\" name=\"price\" step=\".01\"></div><div><label for=\"description\">Description</label><textarea id=\"description\" name=\"description\" cols=\"20\" rows=\"10\"></textarea></div><input class=\"button uppercase\" type=\"submit\" value=\"Add\"></form></main><script src=\"/public/js/book-controller.js\"></script>");
+  out.w("<main class=\"wrapper center\"> <h1>Add a new book</h1><form action=\"/book\" method=\"post\"><input type=\"hidden\" id=\"id\" name=\"id\"" +
+    marko_attr("value", "" + data.book.id) +
+    "><div><label for=\"title\">Title</label><input type=\"text\" id=\"title\" name=\"title\"" +
+    marko_attr("value", "" + (data.book.title || "")) +
+    " autofocus></div><div><label for=\"price\">Price</label><input type=\"number\" id=\"price\" name=\"price\" step=\".01\"" +
+    marko_attr("value", "" + (data.book.price || "")) +
+    "></div><div><label for=\"description\">Description</label><textarea id=\"description\" name=\"description\" cols=\"20\" rows=\"5\">" +
+    marko_escapeXml(data.book.description) +
+    "</textarea></div><button id=\"save\" class=\"button uppercase\" type=\"button\">Save</button></form></main><script src=\"/public/js/book-controller.js\"></script>");
 
   init_components_tag({}, out);
 

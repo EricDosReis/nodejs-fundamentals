@@ -50,21 +50,10 @@ db.serialize(() => {
   db.run(BOOK_SCHEMA);
   db.run(INSERT_BOOK_1);
   db.run(INSERT_BOOK_2);
-
-  db.each("SELECT * FROM user", (err, user) => {
-    console.log('User: ');
-    console.log(user);
-  });
-
-  db.each("SELECT * FROM book", (err, book) => {
-    console.log('Book: ');
-    console.log(book);
-  });
 });
 
 process.on('SIGINT', () =>
   db.close(() => {
-    console.log('DB terminated!');
     process.exit(0);
   })
 );

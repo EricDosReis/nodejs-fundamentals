@@ -1,17 +1,39 @@
-const booksTable = document.querySelector('#books');
+const saveButton = document.querySelector('#save');
+const API_URL = 'http://localhost:3000';
+const RESOURCE = 'book';
 
-booksTable.addEventListener('click', (event) => {
+const book = {
+  id: document.querySelector('#id').value,
+  title: document.querySelector('#title').value,
+  price: document.querySelector('#price').value,
+  description: document.querySelector('#description').value,
+};
+
+saveButton.addEventListener('click', (event) => {
   const target = event.target;
 
-  if (target.dataset.action === 'remove') {
-    const bookId = target.dataset.ref;
+  if (!book.id === '') 
+    update(book);
+  else 
+    save(book);
+});
 
-    fetch(`http://localhost:3000/book/${bookId}`, { method: 'DELETE' })
-      .then(res => {
-        const tr = target.closest(`#book-${bookId}`)
-        
-        tr.remove();
-      })
-      .catch(console.error);
-  }
-})
+function update(book) {
+  fetch(`${API_URL}/${RESOURCE}`, {
+    method: 'PUT',
+    body: JSON.stringify(book),
+  })
+  .then(() => {
+    window.location.replace(`${API_URL}/${RESOURCE}`);
+  });
+};
+
+function save(book) {
+  fetch(`${API_URL}/${RESOURCE}`, {
+    method: 'POST',
+    body: JSON.stringify(book),
+  })
+  .then(() => {
+    window.location.replace(`${API_URL}/${RESOURCE}`);
+  });
+};

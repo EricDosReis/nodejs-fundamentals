@@ -14,7 +14,7 @@ module.exports = (app) => {
       .then(books => {
         res.marko(
           require('../views/book/list'),
-          { books }
+          { books },
         );
       })
       .catch(console.error);
@@ -22,8 +22,23 @@ module.exports = (app) => {
 
   app.get('/book/form', (req, res) => {
     res.marko(
-      require('../views/book/form')
+      require('../views/book/form'),
+      { book: {} },
     );
+  });
+
+  app.get('/book/form/:id', (req, res) => {
+    const bookDao = new BookDao(db);
+
+    bookDao
+      .getOne(req.params.id)
+      .then(book => {
+        res.marko(
+          require('../views/book/form'),
+          { book },
+        );
+      })
+      .catch(console.error);
   });
 
   app.post('/book', (req, res) => {
@@ -31,6 +46,15 @@ module.exports = (app) => {
 
     bookDao
       .add(req.body)
+      .then(res.redirect('/book'))
+      .catch(console.error);
+  });
+
+  app.put('/book', (req, res) => {
+    const bookDao = new BookDao(db);
+
+    bookDao
+      .update(req.body)
       .then(res.redirect('/book'))
       .catch(console.error);
   });
