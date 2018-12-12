@@ -3,17 +3,7 @@ const db = require('../../config/database');
 
 module.exports = (app) => {
   app.get('/', (req, res) => {
-    res.send(`
-      <html>
-        <head>
-          <title>House of Code</title>
-        </head>
-
-        <body>
-          <h1>House of Code</h1>
-        </body>
-      </html>
-    `);
+    res.redirect('/book');
   });
 
   app.get('/book', (req, res) => {
@@ -27,7 +17,7 @@ module.exports = (app) => {
           { books }
         );
       })
-      .catch(console.error); 
+      .catch(console.error);
   });
 
   app.get('/book/form', (req, res) => {

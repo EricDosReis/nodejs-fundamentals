@@ -19,11 +19,11 @@ function render(input, out, __component, component, state) {
 
   component_globals_tag({}, out);
 
-  out.w("<h1>Add a new book</h1><form action=\"/book\" method=\"post\"><input type=\"hidden\" id=\"id\" name=\"id\"><div><label for=\"title\">Title</label><input type=\"text\" id=\"title\" name=\"title\"></div><div><label for=\"price\">Price</label><input type=\"number\" id=\"price\" name=\"price\"></div><div><label for=\"description\">Description</label><textarea id=\"description\" name=\"description\" cols=\"20\" rows=\"10\"></textarea></div><input type=\"submit\" value=\"Add\"></form>");
+  out.w("<main class=\"wrapper center\"> <h1>Add a new book</h1><form action=\"/book\" method=\"post\"><input type=\"hidden\" id=\"id\" name=\"id\"><div><label for=\"title\">Title</label><input type=\"text\" id=\"title\" name=\"title\"></div><div><label for=\"price\">Price</label><input type=\"number\" id=\"price\" name=\"price\" step=\".01\"></div><div><label for=\"description\">Description</label><textarea id=\"description\" name=\"description\" cols=\"20\" rows=\"10\"></textarea></div><input class=\"button uppercase\" type=\"submit\" value=\"Add\"></form></main><script src=\"/public/js/book-controller.js\"></script>");
 
   init_components_tag({}, out);
 
-  await_reorderer_tag({}, out, __component, "18");
+  await_reorderer_tag({}, out, __component, "20");
 
   out.w("</body></html>");
 }

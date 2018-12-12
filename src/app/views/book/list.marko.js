@@ -18,16 +18,16 @@ var marko_template = module.exports = require("marko/src/html").t(__filename),
 function render(input, out, __component, component, state) {
   var data = input;
 
-  out.w("<html><head><title>See our books</title></head><body>");
+  out.w("<html><head><title>See our books</title><link rel=\"stylesheet\" href=\"/public/css/style.css\"></head><body>");
 
   component_globals_tag({}, out);
 
-  out.w("<h1>Books</h1><table id=\"books\"><thead><tr><th>Title</th><th>Price</th><th>Actions</th></tr></thead><tbody>");
+  out.w("<main class=\"wrapper center\"><h1>Books</h1><table id=\"books\"><thead><tr><th>Title</th><th>Price</th><th>Actions</th></tr></thead><tbody>");
 
-  var for__12 = 0;
+  var for__14 = 0;
 
   marko_forEach(data.books, function(book) {
-    var keyscope__13 = "[" + ((for__12++) + "]");
+    var keyscope__15 = "[" + ((for__14++) + "]");
 
     out.w("<tr" +
       marko_attr("id", "book-" + book.id) +
@@ -35,18 +35,18 @@ function render(input, out, __component, component, state) {
       marko_escapeXml(book.title) +
       "</td><td>" +
       marko_escapeXml(book.price) +
-      "</td><td><button type=\"button\"" +
+      "</td><td><button type=\"button\" class=\"button m-0 mr-1 uppercase\"" +
       marko_attr("data-ref", "" + book.id) +
-      " data-action=\"update\">Editar</button> <button type=\"button\"" +
+      " data-action=\"edit\">Edit</button><button type=\"button\" class=\"button m-0 uppercase\"" +
       marko_attr("data-ref", "" + book.id) +
-      " data-action=\"remove\">Remover</button></td></tr>");
+      " data-action=\"remove\">Remove</button></td></tr>");
   });
 
-  out.w("</tbody></table><script src=\"/public/js/app.js\"></script>");
+  out.w("</tbody></table></main><script src=\"/public/js/books-controller.js\"></script>");
 
   init_components_tag({}, out);
 
-  await_reorderer_tag({}, out, __component, "21");
+  await_reorderer_tag({}, out, __component, "23");
 
   out.w("</body></html>");
 }

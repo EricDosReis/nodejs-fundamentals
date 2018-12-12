@@ -18,7 +18,7 @@ module.exports = class bookDao {
     });
   }
 
-  add(book) {
+  add({ title, price, description }) {
     return new Promise((resolve, reject) => {
       this._db.run(`
         INSERT INTO book (
@@ -27,9 +27,9 @@ module.exports = class bookDao {
           description
         ) VALUES (?, ?, ?)
         `, [
-          book.title,
-          book.price,
-          book.description
+          title,
+          price,
+          description
         ],
         (error) => {
           if (error) {
