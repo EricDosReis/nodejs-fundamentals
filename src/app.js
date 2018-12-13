@@ -22,7 +22,7 @@ app.use(methodOverride((req, res) => {
   }
 }));
 
-const routes = require('../app/routes/routes');
+const routes = require('./app/routes/routes');
 routes(app);
 
 module.exports = app;
