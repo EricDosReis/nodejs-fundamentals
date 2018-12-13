@@ -7,10 +7,11 @@ class BookController {
     if (table) {
       table.addEventListener('click', (event) => {
         const target = event.target;
+        const bookId = target.dataset.id;
 
         if (target.dataset.action === 'remove') {
           this
-            ._remove(target.dataset.id)
+            ._remove(bookId)
             .then(() => target.closest(`#book-${bookId}`).remove())
             .catch(console.error);
         }
