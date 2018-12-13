@@ -1,6 +1,8 @@
 <html>
   <head>
-    <title>New book</title>
+    <title>
+      ${data.pageTitle}
+    </title>
 
     <link rel="stylesheet" href="/public/css/style.css">
   </head>
@@ -10,19 +12,19 @@
       <h1>Add a new book</h1>
 
       <form action="/book" method="post">
-        <if(data.book.id)>
+        <if (data.book.id)>
           <input type="hidden" name="_method" value="PUT">
           <input type="hidden" id="id" name="id" value="${data.book.id}">
         </if>
 
         <div>
-          <label for="title">Title</label>
-          <input type="text" id="title" name="title" value="${data.book.title || ''}" autofocus>
+          <label for="title">* Title</label>
+          <input type="text" id="title" name="title" value="${data.book.title || ''}" autofocus required>
         </div>
         
         <div>
-          <label for="price">Price</label>
-          <input type="number" id="price" name="price" step=".01" value="${data.book.price || ''}">
+          <label for="price">* Price</label>
+          <input type="number" id="price" name="price" step=".01" value="${data.book.price || ''}" required>
         </div>
 
         <div>
@@ -30,8 +32,15 @@
           <textarea id="description" name="description" cols="20" rows="5">${data.book.description}</textarea>
         </div>
 
-        <input class="button uppercase" type="submit" value="Save">
+        <p class="text-small">* Required fields</p>
+
+        <input class="button mr-1 uppercase" type="submit" value="Save">
+
+        <a href="/book" class="button uppercase">
+          Cancel
+        </a>
       </form>
+
     </main>
   </body>
 </html>

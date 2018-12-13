@@ -23,7 +23,10 @@ module.exports = (app) => {
   app.get('/book/form', (req, res) => {
     res.marko(
       require('../views/book/form'),
-      { book: {} },
+      { 
+        book: {},
+        pageTitle: 'New Book',
+      },
     );
   });
 
@@ -35,7 +38,10 @@ module.exports = (app) => {
       .then(book => {
         res.marko(
           require('../views/book/form'),
-          { book },
+          { 
+            book,
+            pageTitle: 'Edit Book',
+          },
         );
       })
       .catch(console.error);
@@ -68,4 +74,3 @@ module.exports = (app) => {
       .catch(console.error);
   });
 };
-

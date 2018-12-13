@@ -14,7 +14,7 @@
           <tr>
             <th>Title</th>
             <th>Price</th>
-            <th class="text-right">Actions</th>
+            <th align="text-right">Actions</th>
           </tr>
         </thead>
 
@@ -29,7 +29,7 @@
                   Edit
                 </a>
 
-                <button type="button" class="button m-0 uppercase" data-ref="${book.id}" data-action="remove">
+                <button type="button" class="button m-0 uppercase" data-id="${book.id}" data-action="remove">
                   Remove
                 </button>
               </td>
@@ -44,6 +44,6 @@
       </a>
     </main>
 
-    <script src="/public/js/books-controller.js"></script>
+    <script type="module" src="/public/js/app.js"></script>
   </body>
 </html>

@@ -22,7 +22,7 @@ function render(input, out, __component, component, state) {
 
   component_globals_tag({}, out);
 
-  out.w("<main class=\"wrapper center\"><h1>Books</h1><table id=\"books\"><thead><tr><th>Title</th><th>Price</th><th class=\"text-right\">Actions</th></tr></thead><tbody>");
+  out.w("<main class=\"wrapper center\"><h1>Books</h1><table id=\"books\"><thead><tr><th>Title</th><th>Price</th><th align=\"text-right\">Actions</th></tr></thead><tbody>");
 
   var for__14 = 0;
 
@@ -38,11 +38,11 @@ function render(input, out, __component, component, state) {
       "</td><td align=\"right\"><a" +
       marko_attr("href", "/book/form/" + book.id) +
       " class=\"button m-0 mr-1 uppercase\">Edit</a><button type=\"button\" class=\"button m-0 uppercase\"" +
-      marko_attr("data-ref", "" + book.id) +
+      marko_attr("data-id", "" + book.id) +
       " data-action=\"remove\">Remove</button></td></tr>");
   });
 
-  out.w("</tbody></table><a href=\"/book/form\" class=\"button mr-1 uppercase\">New</a></main><script src=\"/public/js/books-controller.js\"></script>");
+  out.w("</tbody></table><a href=\"/book/form\" class=\"button mr-1 uppercase\">New</a></main><script type=\"module\" src=\"/public/js/app.js\"></script>");
 
   init_components_tag({}, out);
 

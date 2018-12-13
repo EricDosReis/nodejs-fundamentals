@@ -49,13 +49,13 @@ td, th {
   padding: .5em;
 }
 
+
 .button {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
   background-color: #2BA6CB;
   border: 1px solid transparent;
-  border-radius: 3px;
   color: #FEFEFE;
   cursor: pointer;
   display: inline-block;
@@ -64,7 +64,7 @@ td, th {
   letter-spacing: .125rem;
   line-height: 1;
   margin: 0 0 1rem 0;
-  padding: .5rem;
+  padding: .25rem;
   text-align: center;
   text-decoration: none;
   transition: background-color 250ms ease-in-out, color 250ms ease-in-out;
@@ -209,4 +209,8 @@ textarea:disabled {
 
 .text-right {
   text-align: right;
+}
+
+.text-small {
+  font-size: .875em;
 }
