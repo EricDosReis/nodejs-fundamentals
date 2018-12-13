@@ -1,3 +1,3 @@
-import BookController from './BookController.js';
+import { BookController } from './domains/BookController.js';
 
 const controller = new BookController(document.querySelector('#books'));

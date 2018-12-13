@@ -1,5 +1,8 @@
-class BookController {
+import { BookService } from './BookService.js';
+
+export class BookController {
   constructor(table) {
+    this._service = new BookService();
     this._setTableListeners(table);
   }
 
@@ -10,19 +13,13 @@ class BookController {
         const bookId = target.dataset.id;
 
         if (target.dataset.action === 'remove') {
-          this
-            ._remove(bookId)
+          this._service
+            .remove(bookId)
             .then(() => target.closest(`#book-${bookId}`).remove())
             .catch(console.error);
         }
       });
     }
   }
-
-  _remove(bookId) {
-    return fetch(`http://localhost:3000/book/${bookId}`, { method: 'DELETE' });
-  }
 }
-
-export default BookController;
  
