@@ -9,6 +9,7 @@ module.exports = class bookDao {
         'SELECT * FROM book',
         (error, books) => {
           if (error) {
+            console.error(error);
             return reject('Books could not be listed');
           }
           
@@ -31,8 +32,9 @@ module.exports = class bookDao {
           price,
           description
         ],
-        (error) => {
+        error => {
           if (error) {
+            console.error(error);
             return reject('Could not add book');
           }
 
@@ -45,19 +47,20 @@ module.exports = class bookDao {
   update({ id, title, price, description }) {
     return new Promise((resolve, reject) => {
       this._db.run(`
-        UPDATE book
-        SET title = ?
-            price = ?,
-            description = ?,
+        UPDATE book SET
+          title = ?,
+          price = ?,
+          description = ?
         WHERE id = ?
         `, [
-          id,
           title,
           price,
-          description
+          description,
+          id
         ],
-        (error) => {
+        error => {
           if (error) {
+            console.error(error);
             return reject('Could not update book');
           }
 
@@ -74,6 +77,7 @@ module.exports = class bookDao {
         id,
         (error, result) => {
           if (error) {
+            console.error(error);
             return reject('Book not found');
           }
 
@@ -91,8 +95,9 @@ module.exports = class bookDao {
       `,
         id
       ,
-      (error) => {
+      error => {
         if (error) {
+          console.error(error);
           return reject('Could not delete book');
         }
 

@@ -10,7 +10,10 @@
       <h1>Add a new book</h1>
 
       <form action="/book" method="post">
-        <input type="hidden" id="id" name="id" value="${data.book.id}">
+        <if(data.book.id)>
+          <input type="hidden" name="_method" value="PUT">
+          <input type="hidden" id="id" name="id" value="${data.book.id}">
+        </if>
 
         <div>
           <label for="title">Title</label>
@@ -27,12 +30,8 @@
           <textarea id="description" name="description" cols="20" rows="5">${data.book.description}</textarea>
         </div>
 
-        <button id="save" class="button uppercase" type="button">
-          Save
-        </button>
+        <input class="button uppercase" type="submit" value="Save">
       </form>
     </main>
-
-    <script src="/public/js/book-controller.js"></script>
   </body>
 </html>

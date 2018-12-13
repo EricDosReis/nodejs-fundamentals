@@ -22,7 +22,7 @@ function render(input, out, __component, component, state) {
 
   component_globals_tag({}, out);
 
-  out.w("<main class=\"wrapper center\"><h1>Books</h1><table id=\"books\"><thead><tr><th>Title</th><th>Price</th><th>Actions</th></tr></thead><tbody>");
+  out.w("<main class=\"wrapper center\"><h1>Books</h1><table id=\"books\"><thead><tr><th>Title</th><th>Price</th><th class=\"text-right\">Actions</th></tr></thead><tbody>");
 
   var for__14 = 0;
 
@@ -35,7 +35,7 @@ function render(input, out, __component, component, state) {
       marko_escapeXml(book.title) +
       "</td><td>" +
       marko_escapeXml(book.price) +
-      "</td><td><a" +
+      "</td><td align=\"right\"><a" +
       marko_attr("href", "/book/form/" + book.id) +
       " class=\"button m-0 mr-1 uppercase\">Edit</a><button type=\"button\" class=\"button m-0 uppercase\"" +
       marko_attr("data-ref", "" + book.id) +

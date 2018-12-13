@@ -37,6 +37,7 @@ th {
   border-bottom: 1px solid #DDD;
   font-size: .8125rem;
   letter-spacing: .0625rem;
+  text-align: left;
   text-transform: uppercase;
 }
 
@@ -46,7 +47,6 @@ td {
 
 td, th {
   padding: .5em;
-  text-align: left;
 }
 
 .button {
@@ -205,4 +205,8 @@ textarea:disabled {
 
 .uppercase {
   text-transform: uppercase;
+}
+
+.text-right {
+  text-align: right;
 }
