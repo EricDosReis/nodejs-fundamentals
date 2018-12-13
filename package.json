@@ -1,5 +1,5 @@
 {
-  "name": "nodejs-fundamentals",
+  "name": "nodejs-simple-crud-app",
   "version": "1.0.0",
   "description": "Project from course 'NodeJS Fundamentals' lectured by Gabriel Leite",
   "main": "server.js",
@@ -9,13 +9,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/EricDosReis/nodejs-fundamentals.git"
+    "url": "git+https://github.com/EricDosReis/nodejs-simple-crud-app.git"
   },
   "keywords": [
     "javascript",
     "nodejs",
-    "api",
-    "rest",
+    "sqlite",
+    "crud",
+    "app",
     "studies",
     "course",
     "alura"
@@ -23,9 +24,9 @@
   "author": "Eric dos Reis <ericdosreis.personal@gmail.com> (https://github.com/EricDosReis)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/EricDosReis/nodejs-fundamentals/issues"
+    "url": "https://github.com/EricDosReis/nodejs-simple-crud-app/issues"
   },
-  "homepage": "https://github.com/EricDosReis/nodejs-fundamentals#readme",
+  "homepage": "https://github.com/EricDosReis/nodejs-simple-crud-app#readme",
   "dependencies": {
     "body-parser": "1.18.3",
     "express": "4.16.4",
