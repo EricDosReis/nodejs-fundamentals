@@ -10,7 +10,7 @@ module.exports = class bookDao {
         (error, books) => {
           if (error) {
             console.error(error);
-            return reject('Books could not be listed');
+            return reject('Could not execute the book query');
           }
           
           return resolve(books);
@@ -35,7 +35,7 @@ module.exports = class bookDao {
         error => {
           if (error) {
             console.error(error);
-            return reject('Could not add book');
+            return reject('Could not add the book');
           }
 
           return resolve();
@@ -61,7 +61,7 @@ module.exports = class bookDao {
         error => {
           if (error) {
             console.error(error);
-            return reject('Could not update book');
+            return reject('Could not update the book');
           }
 
           return resolve();
@@ -78,7 +78,7 @@ module.exports = class bookDao {
         (error, result) => {
           if (error) {
             console.error(error);
-            return reject('Book not found');
+            return reject('Could not execute the book query');
           }
 
           return resolve(result[0]);
@@ -98,7 +98,7 @@ module.exports = class bookDao {
       error => {
         if (error) {
           console.error(error);
-          return reject('Could not delete book');
+          return reject('Could not delete the book');
         }
 
         return resolve();
