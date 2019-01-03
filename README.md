@@ -1,6 +1,6 @@
 # Running instructions
 
-**Prerequisites**: NodeJS installed.
+**Prerequisites**: NodeJS and nodemon installed.
 
 * open terminal
 * clone this repository ```git clone https://github.com/EricDosReis/nodejs-simple-crud-app.git```
