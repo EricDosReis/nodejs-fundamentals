@@ -8,10 +8,10 @@
   </head>
 
   <body>
-    <main class="wrapper center">  
+    <main class="wrapper center">
       <h1>Add a new book</h1>
 
-      <form action="/book" method="post">
+      <form action="/book" method="post" enctype="multipart/form-data" accept="image/jpg">
         <if (data.book.id)>
           <input type="hidden" name="_method" value="PUT">
           <input type="hidden" id="id" name="id" value="${data.book.id}">
@@ -21,10 +21,15 @@
           <label for="title">* Title</label>
           <input type="text" id="title" name="title" value="${data.book.title || ''}" autofocus required>
         </div>
-        
+
         <div>
           <label for="price">* Price</label>
           <input type="number" id="price" name="price" step=".01" value="${data.book.price || ''}" required>
+        </div>
+
+        <div>
+          <label for="cover">* Cover</label>
+          <input type="file" id="cover" name="cover" required>
         </div>
 
         <div>

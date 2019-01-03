@@ -12,25 +12,27 @@ module.exports = class bookDao {
             console.error(error);
             return reject('Books could not be listed');
           }
-          
+
           return resolve(books);
         }
       );
     });
   }
 
-  add({ title, price, description }) {
+  add({ title, price, description, image }) {
     return new Promise((resolve, reject) => {
       this._db.run(`
         INSERT INTO book (
           title,
           price,
-          description
-        ) VALUES (?, ?, ?)
+          description,
+          image
+        ) VALUES (?, ?, ?, ?)
         `, [
           title,
           price,
-          description
+          description,
+          image
         ],
         error => {
           if (error) {
@@ -44,18 +46,20 @@ module.exports = class bookDao {
     });
   }
 
-  update({ id, title, price, description }) {
+  update({ id, title, price, description, image }) {
     return new Promise((resolve, reject) => {
       this._db.run(`
         UPDATE book SET
           title = ?,
           price = ?,
-          description = ?
+          description = ?,
+          image = ?
         WHERE id = ?
         `, [
           title,
           price,
           description,
+          image,
           id
         ],
         error => {

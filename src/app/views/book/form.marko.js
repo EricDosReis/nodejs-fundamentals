@@ -23,7 +23,7 @@ function render(input, out, __component, component, state) {
 
   component_globals_tag({}, out);
 
-  out.w("<main class=\"wrapper center\"> <h1>Add a new book</h1><form action=\"/book\" method=\"post\">");
+  out.w("<main class=\"wrapper center\"><h1>Add a new book</h1><form action=\"/book\" method=\"post\" enctype=\"multipart/form-data\" accept=\"image/jpg\">");
 
   if (data.book.id) {
     out.w("<input type=\"hidden\" name=\"_method\" value=\"PUT\"><input type=\"hidden\" id=\"id\" name=\"id\"" +
@@ -35,13 +35,13 @@ function render(input, out, __component, component, state) {
     marko_attr("value", "" + (data.book.title || "")) +
     " autofocus required></div><div><label for=\"price\">* Price</label><input type=\"number\" id=\"price\" name=\"price\" step=\".01\"" +
     marko_attr("value", "" + (data.book.price || "")) +
-    " required></div><div><label for=\"description\">Description</label><textarea id=\"description\" name=\"description\" cols=\"20\" rows=\"5\">" +
+    " required></div><div><label for=\"cover\">* Cover</label><input type=\"file\" id=\"cover\" name=\"cover\" required></div><div><label for=\"description\">Description</label><textarea id=\"description\" name=\"description\" cols=\"20\" rows=\"5\">" +
     marko_escapeXml(data.book.description) +
     "</textarea></div><p class=\"text-small\">* Required fields</p><input class=\"button mr-1 uppercase\" type=\"submit\" value=\"Save\"><a href=\"/book\" class=\"button uppercase\">Cancel</a></form></main>");
 
   init_components_tag({}, out);
 
-  await_reorderer_tag({}, out, __component, "22");
+  await_reorderer_tag({}, out, __component, "25");
 
   out.w("</body></html>");
 }

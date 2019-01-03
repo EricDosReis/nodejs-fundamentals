@@ -10,8 +10,8 @@ var marko_template = module.exports = require("marko/src/html").t(__filename),
     marko_loadTag = marko_helpers.t,
     component_globals_tag = marko_loadTag(require("marko/src/components/taglib/component-globals-tag")),
     marko_forEach = marko_helpers.f,
-    marko_escapeXml = marko_helpers.x,
     marko_attr = marko_helpers.a,
+    marko_escapeXml = marko_helpers.x,
     init_components_tag = marko_loadTag(require("marko/src/components/taglib/init-components-tag")),
     await_reorderer_tag = marko_loadTag(require("marko/src/taglibs/async/await-reorderer-tag"));
 
@@ -22,16 +22,18 @@ function render(input, out, __component, component, state) {
 
   component_globals_tag({}, out);
 
-  out.w("<main class=\"wrapper center\"><h1>Books</h1><table id=\"books\"><thead><tr><th>Title</th><th>Price</th><th align=\"text-right\">Actions</th></tr></thead><tbody>");
+  out.w("<main class=\"wrapper center\"><h1>Books</h1><table id=\"books\"><thead><tr><th>Cover</th><th>Title</th><th>Price</th><th class=\"text-right\">Actions</th></tr></thead><tbody>");
 
-  var for__14 = 0;
+  var for__15 = 0;
 
   marko_forEach(data.books, function(book) {
-    var keyscope__15 = "[" + ((for__14++) + "]");
+    var keyscope__16 = "[" + ((for__15++) + "]");
 
     out.w("<tr" +
       marko_attr("id", "book-" + book.id) +
-      "><td>" +
+      "><td><img width=\"80\"" +
+      marko_attr("src", "public/images/books/" + book.image) +
+      " alt=\"Cover\"></td><td>" +
       marko_escapeXml(book.title) +
       "</td><td>" +
       marko_escapeXml(book.price) +
@@ -46,7 +48,7 @@ function render(input, out, __component, component, state) {
 
   init_components_tag({}, out);
 
-  await_reorderer_tag({}, out, __component, "24");
+  await_reorderer_tag({}, out, __component, "27");
 
   out.w("</body></html>");
 }

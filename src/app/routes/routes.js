@@ -1,3 +1,21 @@
+const multer = require('multer');
+const fs = require('fs');
+
+// TODO: create book controller
+
+// TODO: move to a external file
+const storage = multer.diskStorage({
+  destination(req, file, cb) {
+    cb(null, 'public/images/books/');
+  },
+
+  filename(req, file, cb) {
+    cb(null, file.originalname);
+  }
+});
+
+const upload = multer({ storage });
+
 const BookDao = require('../dao/book');
 const db = require('../../config/database');
 
@@ -23,7 +41,7 @@ module.exports = (app) => {
   app.get('/book/form', (req, res) => {
     res.marko(
       require('../views/book/form'),
-      { 
+      {
         book: {},
         pageTitle: 'New Book',
       },
@@ -38,7 +56,7 @@ module.exports = (app) => {
       .then(book => {
         res.marko(
           require('../views/book/form'),
-          { 
+          {
             book,
             pageTitle: 'Edit Book',
           },
@@ -47,11 +65,14 @@ module.exports = (app) => {
       .catch(console.error);
   });
 
-  app.post('/book', (req, res) => {
+  app.post('/book', upload.single('cover'), (req, res) => {
     const bookDao = new BookDao(db);
+    const book = req.body;
+
+    book.image = req.file.originalname;
 
     bookDao
-      .add(req.body)
+      .add(book)
       .then(res.redirect('/book'))
       .catch(console.error);
   });
@@ -65,6 +86,7 @@ module.exports = (app) => {
       .catch(console.error);
   });
 
+  // TODO: implements file remove
   app.delete('/book/:id', (req, res) => {
     const bookDao = new BookDao(db);
 

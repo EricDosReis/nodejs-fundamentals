@@ -12,16 +12,18 @@
       <table id="books">
         <thead>
           <tr>
+            <th>Cover</th>
             <th>Title</th>
             <th>Price</th>
-            <th align="text-right">Actions</th>
+            <th class="text-right">Actions</th>
           </tr>
         </thead>
 
         <tbody>
           <for (book in data.books)>
-          
+
             <tr id="book-${book.id}">
+              <td><img width="80" src="public/images/books/${book.image}" alt="Cover"></td>
               <td>${book.title}</td>
               <td>${book.price}</td>
               <td align="right">
@@ -34,7 +36,7 @@
                 </button>
               </td>
             </tr>
-            
+
           </for>
         </tbody>
       </table>
