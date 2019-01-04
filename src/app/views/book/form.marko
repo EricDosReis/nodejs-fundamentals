@@ -11,9 +11,8 @@
     <main class="wrapper center">
       <h1>Add a new book</h1>
 
-      <form action="/book" method="post" enctype="multipart/form-data" accept="image/jpg">
+      <form action="/book${data.book.id ? '?_method=PUT': ''}" method="post" enctype="multipart/form-data" accept="image/jpg">
         <if (data.book.id)>
-          <input type="hidden" name="_method" value="PUT">
           <input type="hidden" id="id" name="id" value="${data.book.id}">
         </if>
 
@@ -27,9 +26,14 @@
           <input type="number" id="price" name="price" step=".01" value="${data.book.price || ''}" required>
         </div>
 
+        <if (data.book.image)>
+          <input type="hidden" id="image" name="image" value="${data.book.image}">
+          <img width="80" src="/public/images/books/${data.book.image}" alt="Cover">
+        </if>
+
         <div>
-          <label for="cover">* Cover</label>
-          <input type="file" id="cover" name="cover" required>
+          <label for="cover">Cover</label>
+          <input type="file" id="cover" name="cover">
         </div>
 
         <div>

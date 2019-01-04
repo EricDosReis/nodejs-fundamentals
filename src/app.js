@@ -12,17 +12,9 @@ app.use(bodyParser.urlencoded({
 
 app.use('/public', express.static('public'));
 
-app.use(methodOverride((req, res) => {
-  if (req.body && typeof req.body === 'object' && '_method' in req.body) {
-    const method = req.body._method;
+app.use(methodOverride('_method'));
 
-    delete req.body._method;
-
-    return method;
-  }
-}));
-
-const routes = require('./app/routes/routes');
+const routes = require('./app/routes/index');
 routes(app);
 
 module.exports = app;

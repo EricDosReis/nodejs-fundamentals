@@ -32,7 +32,7 @@ function render(input, out, __component, component, state) {
     out.w("<tr" +
       marko_attr("id", "book-" + book.id) +
       "><td><img width=\"80\"" +
-      marko_attr("src", "public/images/books/" + book.image) +
+      marko_attr("src", "/public/images/books/" + book.image) +
       " alt=\"Cover\"></td><td>" +
       marko_escapeXml(book.title) +
       "</td><td>" +

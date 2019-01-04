@@ -3,22 +3,6 @@ module.exports = class bookDao {
     this._db = db;
   }
 
-  list() {
-    return new Promise((resolve, reject) => {
-      this._db.all(
-        'SELECT * FROM book',
-        (error, books) => {
-          if (error) {
-            console.error(error);
-            return reject('Could not execute the book query');
-          }
-
-          return resolve(books);
-        }
-      );
-    });
-  }
-
   add({ title, price, description, image }) {
     return new Promise((resolve, reject) => {
       this._db.run(`
@@ -69,6 +53,22 @@ module.exports = class bookDao {
           }
 
           return resolve();
+        }
+      );
+    });
+  }
+
+  getAll() {
+    return new Promise((resolve, reject) => {
+      this._db.all(
+        'SELECT * FROM book',
+        (error, books) => {
+          if (error) {
+            console.error(error);
+            return reject('Could not execute the book query');
+          }
+
+          return resolve(books);
         }
       );
     });
